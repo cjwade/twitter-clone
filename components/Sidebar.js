@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { signOut } from "next-auth/react";
 import { BsBell, BsBookmark, BsThreeDots, BsTwitter } from "react-icons/bs";
 import { AiFillHome, AiOutlineInbox, AiOutlineUser } from "react-icons/ai";

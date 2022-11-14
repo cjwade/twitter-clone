@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { BsImage, BsEmojiSmile } from "react-icons/bs";
 import { AiOutlineGif, AiOutlineClose } from "react-icons/ai";
 import { RiBarChart2Line } from "react-icons/ri";
@@ -6,8 +6,9 @@ import { IoCalendarNumberOutline } from "react-icons/io5";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useSession } from "next-auth/react";
 
-// import data from "@emoji-mart/data";
-// import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
+// import Picker from '@emoji-mart/react'
+
 import {
 	addDoc,
 	collection,
@@ -20,12 +21,12 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 
 const Input = () => {
+
 	const { data: session } = useSession();
 	const [selectedFile, setSelectedFile] = useState(null);
 	const [showEmojis, setShowEmojis] = useState(false);
 	const [input, setInput] = useState("");
 	const [loading, setLoading] = useState(false);
-
 
 	const addImageToPost = (e) => {
 		const reader = new FileReader();
@@ -47,7 +48,8 @@ const Input = () => {
 	};
 
 	const sendPost = async () => {
-		if (loading) return;
+		if (loading) 
+         return
 
 		setLoading(true);
 
@@ -146,11 +148,11 @@ const Input = () => {
 						</div>
 					)}
 
-					{/* {showEmojis && (
+					{showEmojis && (
 						<div className="absolute mt-[10px] -ml-[40px] max-w-[320px] rounded-[20px]">
-							<Picker onEmojiSelect={addEmoji} data={data} theme="dark" />
+							{/* <Picker onEmojiSelect={addEmoji} data={data} theme="dark" /> */}
 						</div>
-					)} */}
+					)}
 				</div>
 			</div>
 		</div>
