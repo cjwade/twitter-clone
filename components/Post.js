@@ -1,11 +1,46 @@
+import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AiFillHeart, AiOutlineHeart, AiOutlineShareAlt } from "react-icons/ai";
+import { BsChat } from "react-icons/bs";
+import { FaRetweet } from "react-icons/fa";
+import { RiDeleteBin5Line } from "react-icons/ri";
 import Moment from "react-moment";
+import { AppContext } from "../contexts/AppContext";
+import { db } from "../firebase";
 
 const Post = ({ id, post }) => {
-	console.log(post.userImg);
 
+	const [likes, setLikes] = useState([]);
+	const [liked, setLiked] = useState(false);
+	const [comments, setComments] = useState([]);
+
+	const { data: session } = useSession();
 	const router = useRouter();
+
+	const [appContext, setAppContext] = useContext(AppContext);
+
+   useEffect(() => 
+      onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
+      setLikes(snapshot.docs)), [db, id]
+   )
+
+   useEffect(() =>
+    setLiked(
+      likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+    ), [likes]
+  )
+
+   const likePost = async () => {
+      if (liked) {
+         await deleteDoc(doc(db, "posts", id, "likes", session.user.uid))
+      } else {
+         await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
+            username: session.user.name
+         })
+      }
+   }
 
 	return (
 		<div
@@ -42,7 +77,54 @@ const Post = ({ id, post }) => {
 						alt=""
 					/>
 
+					<div className="flex justify-between text-[20px] mt-4 w-[80%]">
+						<div className="flex gap-1 items-center">
+							<BsChat
+								className="hoverEffect w-7 h-7 p-1"
+								onClick={(e) => {
+									e.stopPropagation();
+									// openModal();
+								}}
+							/>
+							{/* {comments.length > 0 && (
+								<span className="text-sm">{comments.length}</span>
+							)} */}
+						</div>
 
+						{session.user.uid !== post?.id ? (
+							<FaRetweet className="hoverEffect w-7 h-7 p-1" />
+						) : (
+							<RiDeleteBin5Line
+								className="hoverEffect w-7 h-7 p-1"
+								onClick={(e) => {
+									e.stopPropagation();
+									deleteDoc(doc(db, "posts", id));
+								}}
+							/>
+						)}
+
+						<div
+							className="flex gap-1 items-center"
+							onClick={(e) => {
+								e.stopPropagation();
+								likePost();
+							}}
+						>
+							{liked ? (
+								<AiFillHeart className="hoverEffect w-7 h-7 p-1 text-pink-700" />
+							) : (
+								<AiOutlineHeart className="hoverEffect w-7 h-7 p-1" />
+							)}
+
+							{likes.length > 0 && (
+								<span className={`${liked && "text-pink-700"} text-sm`}>
+									{likes.length}
+								</span>
+							)}
+						</div>
+
+						<AiOutlineShareAlt className="hoverEffect w-7 h-7 p-1" />
+					</div>
 				</div>
 			</div>
 		</div>
