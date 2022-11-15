@@ -21,27 +21,27 @@ const Trending = () => {
 				<TrendingList
 					category="Entertainment · LIVE"
 					title="Succession Season 4 Returns in the Spring"
-					image="https://drive.google.com/file/d/1Ic-nb39AwZ-SLgg97o4EDMtN2KslOv5h/view?usp=sharing"
+					image="/succession.jpeg"
 				/>
 				<TrendingList
 					category="Sports"
 					title="Houston Astros Win the World Series"
-					image="https://drive.google.com/file/d/1Gt55CwIz1iGLPqZBJn0qJ4iabJMnulNF/view?usp=sharing"
+					image="/astros.jpeg"
 				/>
 				<TrendingList
 					category="Politics"
-					title="Democrats Retain Control of the Senate with Win in Nevada"
-					image="https://drive.google.com/file/d/1T2niCxiqYi-X_TNuueJI1q4z49OMcuTB/view?usp=sharing"
+					title="Democrats Retain Control of the Senate"
+					image="/cmasto.jpeg"
 				/>
 				<TrendingList
 					category="Video Games"
-					title="God of War: Ragnarok is Touted as Game of the Year Favorite"
-					image="https://drive.google.com/file/d/12Wb2GcmfWJw4_Cp1FlHIoTlUg1uwCo0a/view?usp=sharing"
+					title="God of War: Ragnarok receives rave reviews"
+					image="/ragnarok.jpeg"
 				/>
 				<TrendingList
 					category="Sports"
 					title="World Cup Returns this Week in Qatar"
-					image="https://drive.google.com/file/d/1LO617W7oHrKFE46eaIMrsoFgT6TTX8QC/view?usp=sharing"
+					image="/worldcup.jpeg"
 				/>
 			</div>
 		</div>
