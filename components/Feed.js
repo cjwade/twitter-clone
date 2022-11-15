@@ -8,6 +8,7 @@ import Post from "./Post";
 const Feed = () => {
 	const [posts, setPosts] = useState([]);
 
+	/* eslint-disable */
 	useEffect(() => {
 		onSnapshot(
 			query(collection(db, "posts"), orderBy("timestamp", "desc")),
@@ -16,6 +17,8 @@ const Feed = () => {
 			}
 		);
 	}, [db]);
+	/* eslint-enable */
+
 
 	console.log(posts);
 

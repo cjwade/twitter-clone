@@ -28,6 +28,7 @@ const Post = ({ id, post }) => {
 
 	const [appContext, setAppContext] = useContext(AppContext);
 
+   /* eslint-disable */
 	useEffect(
 		() =>
 			onSnapshot(
@@ -55,6 +56,7 @@ const Post = ({ id, post }) => {
 			),
 		[likes]
 	);
+   /* eslint-enable */
 
 	const likePost = async () => {
 		if (liked) {

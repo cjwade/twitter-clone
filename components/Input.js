@@ -1,13 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { BsImage, BsEmojiSmile } from "react-icons/bs";
 import { AiOutlineGif, AiOutlineClose } from "react-icons/ai";
 import { RiBarChart2Line } from "react-icons/ri";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useSession } from "next-auth/react";
-
-import data from "@emoji-mart/data";
-// import Picker from '@emoji-mart/react'
 
 import {
 	addDoc,
@@ -24,7 +21,6 @@ const Input = () => {
 
 	const { data: session } = useSession();
 	const [selectedFile, setSelectedFile] = useState(null);
-	const [showEmojis, setShowEmojis] = useState(false);
 	const [input, setInput] = useState("");
 	const [loading, setLoading] = useState(false);
 
@@ -76,7 +72,6 @@ const Input = () => {
 		setLoading(false);
 		setInput("");
 		setSelectedFile(null);
-		setShowEmojis(false);
 	};
 
 	return (
@@ -132,7 +127,6 @@ const Input = () => {
 								<RiBarChart2Line className="rotate-90" />
 								<BsEmojiSmile
 									className="cursor-pointer"
-									onClick={() => setShowEmojis(!showEmojis)}
 								/>
 								<IoCalendarNumberOutline />
 								<HiOutlineLocationMarker />
@@ -145,12 +139,6 @@ const Input = () => {
 							>
 								Tweet
 							</button>
-						</div>
-					)}
-
-					{showEmojis && (
-						<div className="absolute mt-[10px] -ml-[40px] max-w-[320px] rounded-[20px]">
-							{/* <Picker onEmojiSelect={addEmoji} data={data} theme="dark" /> */}
 						</div>
 					)}
 				</div>
