@@ -8,9 +8,9 @@ import {
 	orderBy,
 	doc,
 } from "firebase/firestore";
-import { db } from "../firebase";
 import { useRouter } from "next/router";
 import Comment from "./Comment";
+import { db } from "../firebase";
 
 const SinglePost = () => {
 	const [post, setPost] = useState([]);

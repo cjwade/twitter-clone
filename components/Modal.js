@@ -9,8 +9,8 @@ import { useSession } from "next-auth/react";
 import { AppContext } from "../contexts/AppContext";
 import Moment from "react-moment";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebase";
 import { useRouter } from "next/router";
+import { db } from "../firebase";
 
 const Modal = () => {
 	const [input, setInput] = useState("");
