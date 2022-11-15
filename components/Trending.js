@@ -21,27 +21,27 @@ const Trending = () => {
 				<TrendingList
 					category="Entertainment · LIVE"
 					title="Succession Season 4 Returns in the Spring"
-					image="assets/succession.jpeg"
+					image="/assets/succession.jpeg"
 				/>
 				<TrendingList
 					category="Sports"
 					title="Houston Astros Win the World Series"
-					image="assets/astros.jpeg"
+					image="/assets/astros.jpeg"
 				/>
 				<TrendingList
 					category="Politics"
 					title="Democrats Retain Control of the Senate with Win in Nevada"
-					image="assets/cmasto.jpeg"
+					image="/assets/cmasto.jpeg"
 				/>
 				<TrendingList
 					category="Video Games"
 					title="God of War: Ragnarok is Touted as Game of the Year Favorite"
-					image="assets/ragnarok.jpeg"
+					image="/assets/ragnarok.jpeg"
 				/>
 				<TrendingList
 					category="Sports"
 					title="World Cup Returns this Week in Qatar"
-					image="assets/worldcup.jpeg"
+					image="/assets/worldcup.jpeg"
 				/>
 			</div>
 		</div>
