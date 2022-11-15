@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useContext } from "react";
 import Feed from "../components/Feed";
