@@ -1,11 +1,15 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import { useContext } from "react";
 import Feed from "../components/Feed";
 import Login from "../components/Login";
+import Modal from "../components/Modal";
 import Sidebar from "../components/Sidebar";
+import { AppContext } from "../contexts/AppContext";
 
 export default function Home() {
 	const { data: session } = useSession();
+	const [appContext] = useContext(AppContext);
 
 	if (!session) return <Login />;
 
@@ -20,6 +24,7 @@ export default function Home() {
 				<Sidebar />
 				<div className="flex gap-6">
 					<Feed />
+					{appContext?.isModalOpen && <Modal />}
 				</div>
 			</main>
 		</div>
